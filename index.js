@@ -36,6 +36,20 @@ app.get('/tweets', (req, resp) =>{
 
 });
 
+// * POSTAR TWEET RECURSO;
+app.post('/tweets', (req, resp) =>{
+
+    const bodyTweet = {
+        ...req.body,
+        avatar: user.avatar,
+    }
+
+    tweets.push(bodyTweet)
+    
+    resp.send('OK')
+});
+
+
 
 
 
