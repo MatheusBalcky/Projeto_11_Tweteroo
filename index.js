@@ -13,12 +13,23 @@ const tweets = [
     { username: 'Pessoa03', tweet: 'Mensagem03', avatar: 'https://w7.pngwing.com/pngs/114/579/png-transparent-pink-cross-stroke-ink-brush-pen-red-ink-brush-ink-leave-the-material-text.png'},
 ];
 
+
+
+
 // * RECURSO QUE SALVA O USUÁRIO NO BACK
 app.post('/sign-up', (req, resp) =>{
     user = req.body;
-    users.push(user)
-    resp.send('Ok')
+
+    if(user.username.length === 0 || user.avatar.length === 0){
+        resp.sendStatus(400)
+    } else {
+        users.push(user);
+        resp.sendStatus(200);
+    }
+    
 });
+
+
 
 // * RECURSO QUE RESPONDE AO FRONT COM OS TWEETS
 app.get('/tweets', (req, resp) =>{
